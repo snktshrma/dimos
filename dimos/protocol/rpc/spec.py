@@ -129,6 +129,5 @@ class RPCSpec(RPCServer, RPCClient):
     def __init__(
         self, *args: Any, rpc_timeouts: dict[str, float], default_rpc_timeout: float, **kwargs: Any
     ) -> None:
-        super().__init__(
-            *args, rpc_timeouts=rpc_timeouts, default_rpc_timeout=default_rpc_timeout, **kwargs
-        )
+        RPCClient.__init__(self, rpc_timeouts=rpc_timeouts, default_rpc_timeout=default_rpc_timeout)
+        super().__init__(*args, **kwargs)
